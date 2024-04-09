@@ -1,0 +1,24 @@
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section {
+    border-style: solid;
+    margin: 1em;
+    border-color: black;
+}
+nav {
+    margin: 1em;
+}
+header {
+    font-family: "Tilt Neon", sans-serif;
+    color: white;
+    background-color: rgb(71, 163, 40);
+}
+body {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
