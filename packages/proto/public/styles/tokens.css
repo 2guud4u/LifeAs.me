@@ -1,0 +1,22 @@
+:root {
+    --size-type-body: 1rem;
+    --size-type-mlarge: 1.25rem;
+    --size-type-large: 1.5rem;
+    --size-type-xlarge: 2rem;
+    --size-type-xxlarge: 2.5rem;
+    /* CSS HEX */
+    --tickle-me-pink: #f08caeff;
+    --feldgrau: #3a4f41ff;
+    --chamoisee: #a77e58ff;
+    --light-cyan: #dffdffff;
+    --electric-blue: #90f3ffff;
+    /* CSS HEX */
+    --vista-blue: #809bceff;
+    --powder-blue: #95b8d1ff;
+    --tiffany-blue: #b8e0d2ff;
+    --honeydew: #d6eadfff;
+    --fairy-tale: #eac4d5ff;
+
+}
+
+

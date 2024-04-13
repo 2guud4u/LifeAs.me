@@ -1,24 +1,80 @@
 article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
 }
 section {
     border-style: solid;
     margin: 1em;
     border-color: black;
+    font-size: var(--size-type-body);
 }
 nav {
     margin: 1em;
+    font-size: var(--size-type-body);
 }
 header {
     font-family: "Tilt Neon", sans-serif;
     color: white;
-    background-color: rgb(71, 163, 40);
+    background-color: var(--vista-blue);
+    font-size: var(--size-type-large);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 body {
     font-family: "Nunito Sans", sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--light-cyan);
+}
+
+.widgets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1em;
+}
+
+card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1em;
+    border-style: solid;
+    margin: 1em;
+    border-color: black;
+    background-color: var(--tiffany-blue);
+    border-radius: 1em;
+}
+
+card heading {
+    color: black;
+    padding: 1em;
+    margin: 1em;
+
+}
+card body{
+    margin: 1em;
+
+}
+a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+header.placard {
+    background-color: white;
+    color: rgb(4, 4, 4);
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+    border-color: rgb(4, 4, 4);
+    border-style: solid;
 }
 
