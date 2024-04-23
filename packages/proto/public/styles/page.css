@@ -1,12 +1,7 @@
 article {
 
 }
-section {
-    border-style: solid;
-    margin: 1em;
-    border-color: black;
-    font-size: var(--size-type-body);
-}
+
 nav {
     margin: 1em;
     font-size: var(--size-type-body);
@@ -14,8 +9,8 @@ nav {
 header {
     font-family: "Tilt Neon", sans-serif;
     color: white;
-    background-color: var(--vista-blue);
-    font-size: var(--size-type-large);
+    background-color: var(--color-banner);
+    font-size: var(--size-type-mlarge);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +19,7 @@ body {
     font-family: "Nunito Sans", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--light-cyan);
+    background-color: var(--color-background-body);
 }
 
 .widgets {
@@ -38,24 +33,81 @@ card {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1em;
+    flex-direction: column;
+    width: 200px;
     border-style: solid;
-    margin: 1em;
+    margin: .5em;
     border-color: black;
-    background-color: var(--tiffany-blue);
+    background-color: var(--color-background-card);
     border-radius: 1em;
+    color: var(--color-text);
 }
 
 card heading {
-    color: black;
-    padding: 1em;
-    margin: 1em;
+    color: var(--color-text);
+    justify-content: space-between;
+    margin: .5em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
 }
-card body{
+card_body{
     margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+card_body img {
+    border-radius: 1em;
 
 }
+section > heading{
+    font-family: "Tilt Neon", sans-serif;
+    font-size: var(--size-type-large);
+    color: var(--color-text-section-title);
+    background-color: var(--color-background-section-title);
+    text-decoration: underline;
+}
+section {
+    border-style: solid;
+    margin: 1em;
+   
+    font-size: var(--size-type-body);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+section_body{
+
+    font-size: var(--size-type-body);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
+widget_body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+card.widget {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
+    border-style: solid;
+    margin: .5em;
+    border-color: black;
+    background-color: var(--color-background-card);
+    border-radius: 1em;
+}
+
 a.nostyle:link {
     text-decoration: inherit;
     color: inherit;
@@ -70,7 +122,7 @@ a.nostyle:visited {
 
 header.placard {
     background-color: white;
-    color: rgb(4, 4, 4);
+    color: var(--color-text);
     padding: 1em;
     margin: 1em;
     border-radius: 1em;

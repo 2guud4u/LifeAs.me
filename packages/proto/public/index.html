@@ -9,38 +9,114 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    
+    <script type="module" src="/index.js"></script>
     <title>Life As ...</title>
-    <article>
+    <body >
+
+    
         <header>
             <h1>Life As ...</h1>
             <h5><a class="nostyle" href="profile.html">Account</a></h5>
+            <label
+                onchange="relayEvent(
+                event, 
+                'dark-mode', 
+                {checked: event.target.checked})">
+
+                <input type="checkbox" autocomplete="off"/>
+                Darkmode
+            </label>
+            
+       
         </header>
+         <article>
+
         
-        <section class="widgets">
-            <card><heading>Up Next</heading></card>
-            <card><heading>Progress</heading></card>
-        </section>
-        <section>
-            Your Friend's Globes
-        </section>
-        <section>
-            Discover
-            <ul>
-                <li><a href="routines/1.html">Life as Jia by jia</a></li>
-                <li><a href="Globe.html"></a>Life as a computer science student by jacob</li>
-                <li><a href="Globe.html"></a>Life as a swim athlete by ashley</li>
+            <section class="widgets">
+                <widget_body>
+                    
+                    <card class="widget">
+                        <heading>Up Next</heading>
+                        <body> - Cardio</body>
+                    </card>
+                    <card class="widget">
+                        <heading>Progress</heading>
+                        <body>Graph of progress or some other stats</body>
+                    </card>
                 
-
-            </ul>
-        </section>
-
-        <nav>
-                <h2>Navigation</h2>
-            <ul>
+                </widget_body>
                 
+            </section>
+            <section>
+                <heading>
+                Your Friend's Globes 
+                </heading>
+                <section_body>
+                    <card>
+                        <heading>Friend name
+                            <div>(icon)</div>
+                        </heading>
+                        <card_body> (image place)/what action item they are on</card_body>
+                    </card>
+                    <card>
+                        <heading>Friend name
+                            <div>(icon)</div>
+                        </heading>
+                        <card_body> (image place)/what action item they are on</card_body>
+                    </card>
+                    <card>
+                        <heading>Friend name
+                            <div>(icon)</div>
+                        </heading>
+                        <card_body> (image place)/what action item they are on</card_body>
+                    </card>
+                    
+                </section_body>
                 
-            </ul>
-        </nav>
+            </section>
+            <section>
+                <heading>
+                    Discover 
+                </heading>
+                filter by:
+                <section_body>
+                    <card>
+                        <heading>Student routine 1
+                            <div>(icon)</div>
+                        </heading>
+                        <card_body> 
+                            <a onclick="loadMore('more/1.html', event.target.closest('card_body'))"><img src="images/placeholder.png" alt="image of student routine"></a>
+                            <div>by j</div>
+                            <div>Rating</div>
+                        </card_body>
+                    </card>
+                    <card>
+                        <heading>Student routine 1
+                            <div>(icon)</div>
+                        </heading>
+                        <card_body> 
+                            <a onclick="loadMore('more/1.html', event.target.closest('card_body'))"><img src="images/placeholder.png" alt="image of student routine"></a>
+                            <div>by j</div>
+                            <div>Rating</div>
+                        </card_body>
+                    </card>
+                    <card>
+                        <heading>Student routine 1
+                            <div>(icon)</div>
+                        </heading>
+                        <card_body> 
+                            <a onclick="loadMore('more/1.html', event.target.closest('card_body'))"><img src="images/placeholder.png" alt="image of student routine"></a>
+                            <div>by j</div>
+                            <div>Rating</div>
+                        </card_body>
+                    </card>
+                    
+                    
+                    
+                    
+                </section_body>
+            </section>
+        
     </article>
+    </body>
 </html>
