@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
+    <script type="module" src="/components/drop-down.js"></script>
     <script type="module" src="/index.js"></script>
     <title>Life As ...</title>
     <body >
@@ -16,7 +17,11 @@
     
         <header>
             <h1>Life As ...</h1>
-            <h5><a class="nostyle" href="profile.html">Account</a></h5>
+            <drop-down>
+                <Dropdown-Item>Account</Dropdown-Item>
+                <Dropdown-Item>Settings</Dropdown-Item>
+                <Dropdown-Item>Log Out</Dropdown-Item>
+            </drop-down>
             <label
                 onchange="relayEvent(
                 event, 
