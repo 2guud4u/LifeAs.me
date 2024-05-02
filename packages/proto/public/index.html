@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    <script type="module" src="/components/drop-down.js"></script>
-    <script type="module" src="/index.js"></script>
+    <script type="module" src="./components/drop-down.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./components/card.js"></script>
     <title>Life As ...</title>
     <body >
 
@@ -85,6 +86,11 @@
                 </heading>
                 filter by:
                 <section_body>
+                    <globe-card open="open" src="api/routines/">
+                        <heading slot="heading">title</heading>
+                        <div slot="body">hfe</div>
+                        <div>jfen</div>
+                    </globe-card>
                     <card>
                         <heading>Student routine 1
                             <div>(icon)</div>
@@ -115,6 +121,11 @@
                             <div>Rating</div>
                         </card_body>
                     </card>
+                    <json-object src="/api/profiles/blaze">
+                        <a href="#" onclick="relayEvent(event, 'json-object:open')">
+                          Blaze Pasquale
+                        </a>
+                      </json-object>
                     
                     
                     
