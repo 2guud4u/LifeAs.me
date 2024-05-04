@@ -3,10 +3,10 @@ import { prepareTemplate } from "./template.js";
 export class CardElement extends HTMLElement {
     static template = prepareTemplate(`<template>
       <header>
-      <slot></slot>
-        <slot name="heading"></slot>
-        <slot name="body"></slot>
-        <slot name="info"></slot>
+      
+        <h1><slot name="name"></slot></h1>
+        <slot name="summary"></slot>
+        <slot name="createdBy"></slot>
       </header>
         <style>
         </style>
@@ -25,10 +25,34 @@ export class CardElement extends HTMLElement {
   
     connectedCallback() {
       const src = this.getAttribute("src");
-  
-      fetch(src).then((response) => {console.log(response)});
-
+      
+      fetch(src).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
+        let slots = renderSlots(val);
+        addFragment(slots, this);});
+      
     }
+}
+function renderSlots(json) { 
+  const entries = Object.entries(json); 
+  const slot = ([key, value]) => { 
+    // default case for now: 
+    return `<span slot="${key}">${value}</span>`; 
+  }; 
+  return entries.map(slot).join("");
 }
 
 customElements.define("globe-card", CardElement);
+
+export function addFragment(htmlString, container) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlString, "text/html");
+  const fragment = Array.from(doc.body.childNodes);
+
+  container.append(...fragment);
+}
+//Steps:
+// call api to get data
+// create hmtl span strings
+// nuke current children from this
+// create element from the span strings
+// append element to the this container
