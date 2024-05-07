@@ -28,7 +28,8 @@ export class CardElement extends HTMLElement {
           margin: .5em;
         }
         card_content {
-          height: 60%;
+          height: 175px;
+
         }
         card_content > p{
           display: none;
