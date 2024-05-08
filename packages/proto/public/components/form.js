@@ -4,15 +4,15 @@ export class FormElement extends HTMLElement {
     // use attributeChangedCallback to trigger notifi if sumbitted failure or success
     // attribute should be called submitionStatus
     // make delete notif on submit
-    static observedAttributes = ["submissionStatus"];
+    static observedAttributes = ["submissionstatus"];
     get path() {
         return this.getAttribute("path");
     }
     get hasId() {
         return this.getAttribute("hasId");
     }
-    get submissionStatus() {
-        return this.getAttribute("submissionStatus");
+    get submissionstatus() {
+        return this.getAttribute("submissionstatus");
     }
     static template = prepareTemplate(`<template>
     <form autocomplete="off">
@@ -69,10 +69,11 @@ export class FormElement extends HTMLElement {
       `restful-form: Attribute ${name} changed from ${oldValue} to`,
       newValue
     );
-    let status_string = `<div>${this.submissionStatus}</div>`
-    addFragment(status_string, this);
+    displaySubmissionStatus(this, this.submissionstatus);
+
 
   }
+
 }
 function onSubmit(form) {
     if (form.hasId){
@@ -89,17 +90,20 @@ function onSubmit(form) {
             if (res.ok) {
                 console.log("Form submitted successfully");
                 form.form.reset();
-                form.setAttribute("submissionStatus", "success");
+                form.setAttribute("submissionstatus", "success");
                 
             } else {
-                form.setAttribute("submissionStatus", "failure:");
-                console.log("submissionStatus", form.submissionStatus);
+                form.setAttribute("submissionstatus", "failure:" + res.status);
                 console.error("Form submission failed");
                 
             }
             
         });
     }
+}
+function displaySubmissionStatus(form, status) {
+  let status_string = `<div>${status}</div>`
+  addFragment(status_string, form);
 }
 
 function renderSlots(json) { 
