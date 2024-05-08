@@ -1,12 +1,19 @@
 import { prepareTemplate } from "./template.js";
 export class FormElement extends HTMLElement {
+    //todo 
+    // use attributeChangedCallback to trigger notifi if sumbitted failure or success
+    // attribute should be called submitionStatus
+    // make delete notif on submit
+    static observedAttributes = ["submissionStatus"];
     get path() {
         return this.getAttribute("path");
     }
     get hasId() {
         return this.getAttribute("hasId");
     }
-
+    get submissionStatus() {
+        return this.getAttribute("submissionStatus");
+    }
     static template = prepareTemplate(`<template>
     <form autocomplete="off">
       <slot></slot>
@@ -49,13 +56,23 @@ export class FormElement extends HTMLElement {
   
     connectedCallback() {
       //get api url
-      const src = this.getAttribute("src");
-      //call fetch and render
-      fetch(src).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
-        let slots = renderSlots(val);
-        addFragment(slots, this);});
+    //   const src = this.getAttribute("src");
+    //   //call fetch and render
+    //   fetch(src).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
+    //     let slots = renderSlots(val);
+    //     addFragment(slots, this);});
       
     }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log(
+      `restful-form: Attribute ${name} changed from ${oldValue} to`,
+      newValue
+    );
+    let status_string = `<div>${this.submissionStatus}</div>`
+    addFragment(status_string, this);
+
+  }
 }
 function onSubmit(form) {
     if (form.hasId){
@@ -72,9 +89,15 @@ function onSubmit(form) {
             if (res.ok) {
                 console.log("Form submitted successfully");
                 form.form.reset();
+                form.setAttribute("submissionStatus", "success");
+                
             } else {
+                form.setAttribute("submissionStatus", "failure:");
+                console.log("submissionStatus", form.submissionStatus);
                 console.error("Form submission failed");
+                
             }
+            
         });
     }
 }
