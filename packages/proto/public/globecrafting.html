@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <script type="module" src="./components/drop-down.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./components/card.js"></script>
+    <script type="module" src="./components/form.js"></script>
+    <title>Life As ...</title>
+    <body >
+
+    
+        <header>
+            <h1 class="title"><a href="index.html" class="nostyle">Life As ...</a></h1>
+            <a href="./globecrafting.html"class="nostyle">Create Routine</a>
+            <drop-down class="menu">
+
+                <Dropdown-Item><a class="nostyle" href="/profile.html">Profile</a></Dropdown-Item>
+                <Dropdown-Item>Settings</Dropdown-Item>
+                <Dropdown-Item>Log Out</Dropdown-Item>
+            </drop-down>
+            <label style="grid-column:2 ;text-align: center;"
+                onchange="relayEvent(
+                event, 
+                'dark-mode', 
+                {checked: event.target.checked})">
+
+                <input type="checkbox" autocomplete="off"/>
+                Darkmode
+            </label>
+            
+       
+        </header>
+    <article>
+        <my-form path="/api/routines/" hasId="true">
+            <label for="name">Routine Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="summary">Routine Description</label>
+            <input type="text" id="summary" name="summary" required>
+            
+            <label for="createdBy">Routine Creator</label>
+            <input type="text" id="createdBy" name="createdBy" required>
+            
+        </my-form>
+        WIP: FILL OUT ROUTINE BELOW
+            
+        
+    </article>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+card_body img {
+    width: 100%;
+    border-radius: 1em;
+
+}
+  card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
+    border-style: solid;
+    margin: .5em;
+    border-color: black;
+    background-color: var(--color-background-card);
+    border-radius: 1em;
+    color: var(--color-text);
+}
+
+card heading {
+    color: var(--color-text);
+    justify-content: space-between;
+    margin: .5em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+card_body{
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
