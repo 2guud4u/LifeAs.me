@@ -79,6 +79,7 @@ function onSubmit(form) {
     if (form.hasId){
         form._state["id"] = form._state["createdBy"] +"-"+ form._state["name"];
         console.log("Submitting form", form._state);
+        
         return fetch(form.path, {
             method: "POST",
             headers: {
@@ -87,22 +88,30 @@ function onSubmit(form) {
             body: JSON.stringify(form._state),
         })
         .then((res) => {
+          console.log(res);
+          
             if (res.ok) {
                 console.log("Form submitted successfully");
                 form.form.reset();
-                form.setAttribute("submissionstatus", "success");
+                form.setAttribute("submissionstatus", "Success");
                 
             } else {
-                form.setAttribute("submissionstatus", "failure:" + res.status);
-                console.error("Form submission failed");
-                
-            }
-            
-        });
+              res.text().then((text) => {
+                form.setAttribute("submissionstatus", "Failure: " + text);
+              })
+            }   
+        })
+        
+
+        ;
     }
 }
 function displaySubmissionStatus(form, status) {
-  let status_string = `<div>${status}</div>`
+  let status_string = `<div id="status">${status}</div>`
+  document.getElementById("status");
+  if(document.getElementById("status")){
+    document.getElementById("status").remove();
+  }
   addFragment(status_string, form);
 }
 
