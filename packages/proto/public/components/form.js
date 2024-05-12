@@ -76,7 +76,6 @@ function onSubmit(form) {
         body: JSON.stringify(form._state),
     })
     .then((res) => {
-      console.log(res);
       
         if (res.ok) {
             console.log("Form submitted successfully");
@@ -87,7 +86,16 @@ function onSubmit(form) {
           res.text().then((text) => {
             form.setAttribute("submissionstatus", "Failure: " + text);
           })
-        }   
+        }
+        return res.json();   
+    })
+    .then((json) => {
+        console.log("Response", json);
+        form.dispatchEvent(new CustomEvent("my-form:created", {
+            bubbles: true,
+            composed: true,
+            detail: { created: json },
+        }));
     })
 }
 function displaySubmissionStatus(form, status) {

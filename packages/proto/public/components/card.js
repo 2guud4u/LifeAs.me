@@ -93,6 +93,7 @@ export class CardElement extends HTMLElement {
       this.attachShadow({ mode: "open" }).appendChild(
         CardElement.template.cloneNode(true)
       );
+      
     }
     _authObserver = new Observer(this, "snowflake:auth");
 

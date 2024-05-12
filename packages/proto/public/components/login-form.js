@@ -5,7 +5,7 @@ import "./form.js";
 export class LoginFormElement extends HTMLElement {
   static template = prepareTemplate(`
     <template>
-      <my-form new src="/auth/login">
+      <my-form path="/auth/login">
         <slot></slot>
       </my-form>
     </template>
