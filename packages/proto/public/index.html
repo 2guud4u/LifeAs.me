@@ -9,24 +9,28 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    <script type="module" src="./components/drop-down.js"></script>
-    <script type="module" src="./index.js"></script>
-    <script type="module" src="./components/card.js"></script>
-    <script type="module">
-        import { define, Auth } from "@calpoly/mustang";
-      
-        define({ "mu-auth": Auth.Provider });
-      </script>
-      <script type="importmap">
+    <script type="importmap">
         {
           "imports": {
             "@calpoly/mustang": "/node_modules/@calpoly/mustang/dist/mustang.mjs"
           }
         }
       </script>
+      <script type="module">
+        import { define, Auth } from "@calpoly/mustang";
+      
+        define({ "mu-auth": Auth.Provider });
+      </script>
+      <script type="module" src="/js/login-form.js"></script>
+    <script type="module" src="./components/drop-down.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./components/card.js"></script>
+
+
+    </head>
     <title>Life As ...</title>
     <body >
-
+    <mu-auth provides="snowflake:auth" redirect="./profile/login.html">
     
         <header>
             <h1 class="title">Life As ...</h1>
@@ -116,5 +120,6 @@
             </section>
         
     </article>
+    </mu-auth>
     </body>
 </html>

@@ -1,4 +1,5 @@
 import { prepareTemplate } from "./template.js";
+import { Observer } from "@calpoly/mustang";
 export class CardElement extends HTMLElement {
     static template = prepareTemplate(`<template>
     <head>
@@ -93,12 +94,17 @@ export class CardElement extends HTMLElement {
         CardElement.template.cloneNode(true)
       );
     }
-  
+    _authObserver = new Observer(this, "snowflake:auth");
+
     connectedCallback() {
       //get api url
       const src = this.getAttribute("src");
+      let auth = {Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvZyIsImlhdCI6MTcxNTQ4NzUwNCwiZXhwIjoxNzE1NTczOTA0fQ.5IH_95tIpHb-Eer1ZRlPMbckWZJHSehEdToS2NUIYWk`}
       //call fetch and render
-      fetch(src).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
+      fetch(src, {
+        headers: auth
+        
+      }).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
         let slots = renderSlots(val);
         addFragment(slots, this);});
       

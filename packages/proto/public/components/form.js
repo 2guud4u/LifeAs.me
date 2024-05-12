@@ -1,4 +1,5 @@
 import { prepareTemplate } from "./template.js";
+import { Observer, Auth } from "@calpoly/mustang";
 export class FormElement extends HTMLElement {
     //todo 
     // use attributeChangedCallback to trigger notifi if sumbitted failure or success
@@ -55,56 +56,39 @@ export class FormElement extends HTMLElement {
     }
   
     connectedCallback() {
-      //get api url
-    //   const src = this.getAttribute("src");
-    //   //call fetch and render
-    //   fetch(src).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
-    //     let slots = renderSlots(val);
-    //     addFragment(slots, this);});
-      
     }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(
-      `restful-form: Attribute ${name} changed from ${oldValue} to`,
-      newValue
-    );
     displaySubmissionStatus(this, this.submissionstatus);
-
-
   }
 
 }
 function onSubmit(form) {
     if (form.hasId){
-        form._state["id"] = form._state["createdBy"] +"-"+ form._state["name"];
-        console.log("Submitting form", form._state);
-        
-        return fetch(form.path, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(form._state),
-        })
-        .then((res) => {
-          console.log(res);
-          
-            if (res.ok) {
-                console.log("Form submitted successfully");
-                form.form.reset();
-                form.setAttribute("submissionstatus", "Success");
-                
-            } else {
-              res.text().then((text) => {
-                form.setAttribute("submissionstatus", "Failure: " + text);
-              })
-            }   
-        })
-        
-
-        ;
+      form._state["id"] = form._state["createdBy"] +"-"+ form._state["name"];
+      console.log("Submitting form", form._state);
     }
+        return fetch(form.path, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form._state),
+    })
+    .then((res) => {
+      console.log(res);
+      
+        if (res.ok) {
+            console.log("Form submitted successfully");
+            form.form.reset();
+            form.setAttribute("submissionstatus", "Success");
+            
+        } else {
+          res.text().then((text) => {
+            form.setAttribute("submissionstatus", "Failure: " + text);
+          })
+        }   
+    })
 }
 function displaySubmissionStatus(form, status) {
   let status_string = `<div id="status">${status}</div>`
