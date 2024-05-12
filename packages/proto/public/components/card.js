@@ -136,6 +136,10 @@ function loadData(card){
   
   let src = card.src;
   let auth = card.authorization;
+  if (!auth) {
+    console.log("Not authorized to load data");
+    return;
+  }
   fetch(src, {
     headers: auth
   }).then((response) => {return response.json()}).then((val) => { card.replaceChildren();
