@@ -83,8 +83,8 @@ export class CardElement extends HTMLElement {
         </style>
       </template>`);
   
-    get dl() {
-      return this.shadowRoot.querySelector("dl");
+    get src() {
+      return this.getAttribute("src");
     }
   
     constructor() {
@@ -105,16 +105,19 @@ export class CardElement extends HTMLElement {
       );
     }
     connectedCallback() {
-      console.log("Connected callback");
-      this._authObserver.observe(({ user }) => {
-        console.log("Setting user as effect of change", user);
-        this._user = user;
-        if (this.src) {
-          loadData(this);
-        }
 
+      this._authObserver.observe().then((obs) => {
+        obs.setEffect(({ user }) => {
+          console.log("Setting user as effect of change", user);
+          this._user = user;
+          
+          if (this.src) {
+            console.log("LOading JSON", this.authorization);
+            loadData(this);
+          }
+        });
       });
-      loadData(this);
+      
       //get api url
       // const src = this.getAttribute("src");
       // let auth = {Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvZyIsImlhdCI6MTcxNTQ4NzUwNCwiZXhwIjoxNzE1NTczOTA0fQ.5IH_95tIpHb-Eer1ZRlPMbckWZJHSehEdToS2NUIYWk`}
@@ -130,7 +133,8 @@ export class CardElement extends HTMLElement {
 
 }
 function loadData(card){
-  let src = card.getAttribute("src");
+  
+  let src = card.src;
   let auth = card.authorization;
   fetch(src, {
     headers: auth
