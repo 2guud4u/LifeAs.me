@@ -17,3 +17,6 @@ Lab A6. Dynamically Loaded Content : click on the 150 x 150 image and it will di
 Lab A7. Dark Mode Switch: click on check mark
 
 Lab A8. Web Components: click on Accounts on top right corner to expand selection menu
+
+
+http://localhost:3000/profile/login.html?next=../index.html

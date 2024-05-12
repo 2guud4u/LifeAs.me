@@ -3,7 +3,6 @@ import { Observer } from "@calpoly/mustang";
 export class CardElement extends HTMLElement {
     static template = prepareTemplate(`<template>
     <head>
-    <link rel="stylesheet" href="./card/card.css">
     </head>
 
        <card>
@@ -93,23 +92,51 @@ export class CardElement extends HTMLElement {
       this.attachShadow({ mode: "open" }).appendChild(
         CardElement.template.cloneNode(true)
       );
-      
+
     }
     _authObserver = new Observer(this, "snowflake:auth");
 
+    get authorization() {
+      console.log("Authorization for user, ", this._user);
+      return (
+        this._user?.authenticated && {
+          Authorization: `Bearer ${this._user.token}`
+        }
+      );
+    }
     connectedCallback() {
+      console.log("Connected callback");
+      this._authObserver.observe(({ user }) => {
+        console.log("Setting user as effect of change", user);
+        this._user = user;
+        if (this.src) {
+          loadData(this);
+        }
+
+      });
+      loadData(this);
       //get api url
-      const src = this.getAttribute("src");
-      let auth = {Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvZyIsImlhdCI6MTcxNTQ4NzUwNCwiZXhwIjoxNzE1NTczOTA0fQ.5IH_95tIpHb-Eer1ZRlPMbckWZJHSehEdToS2NUIYWk`}
-      //call fetch and render
-      fetch(src, {
-        headers: auth
+      // const src = this.getAttribute("src");
+      // let auth = {Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvZyIsImlhdCI6MTcxNTQ4NzUwNCwiZXhwIjoxNzE1NTczOTA0fQ.5IH_95tIpHb-Eer1ZRlPMbckWZJHSehEdToS2NUIYWk`}
+      // //call fetch and render
+      // fetch(src, {
+      //   headers: auth
         
-      }).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
-        let slots = renderSlots(val);
-        addFragment(slots, this);});
+      // }).then((response) => {return response.json()}).then((val) => { this.replaceChildren();
+      //   let slots = renderSlots(val);
+      //   addFragment(slots, this);});
       
     }
+
+}
+function loadData(card){
+  let src = card.getAttribute("src");
+  let auth = card.authorization;
+  fetch(src, {
+    headers: auth
+  }).then((response) => {return response.json()}).then((val) => { card.replaceChildren();
+    let slots = renderSlots(val);
+    addFragment(slots, card);});
 }
 
 function renderSlots(json) { 
