@@ -9,8 +9,8 @@ export class FormElement extends HTMLElement {
     get path() {
         return this.getAttribute("path");
     }
-    get hasId() {
-        return this.getAttribute("hasId");
+    get user() {
+        return this.getAttribute("user");
     }
     get submissionstatus() {
         return this.getAttribute("submissionstatus");
@@ -78,8 +78,8 @@ export class FormElement extends HTMLElement {
 
 }
 function onSubmit(form) {
-    if (form.hasId){
-      form._state["id"] = form._state["createdBy"] +"-"+ form._state["name"];
+    if (form.user){
+      form._state["id"] = form.user +"-"+ form._state["name"];
       console.log("Submitting form", form._state);
     }
         return fetch(form.path, {

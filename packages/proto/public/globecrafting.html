@@ -25,10 +25,11 @@
     <script type="module" src="./index.js"></script>
     <script type="module" src="./components/card.js"></script>
     <script type="module" src="./components/form.js"></script>
+    <script type="module" src="./components/routine-form.js"></script>
     <title>Life As ...</title>
     <body >
 
-    <mu-auth>
+    <mu-auth provides="snowflake:auth">
         <header>
         
             <h1 class="title"><a href="index.html" class="nostyle">Life As ...</a></h1>
@@ -52,7 +53,7 @@
        
         </header>
     <article>
-        <my-form path="/api/routines/" hasId="true" submissionStatus>
+        <routine-form >
             <label for="name">Routine Name</label>
             <input type="text" id="name" name="name" required>
             <label for="summary">Routine Description</label>
@@ -61,7 +62,7 @@
             <label for="createdBy">Routine Creator</label>
             <input type="text" id="createdBy" name="createdBy" required>
             
-        </my-form>
+        </routine-form>
         WIP: FILL OUT ROUTINE BELOW
             
         
