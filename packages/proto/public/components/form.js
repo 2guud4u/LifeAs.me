@@ -15,6 +15,9 @@ export class FormElement extends HTMLElement {
     get submissionstatus() {
         return this.getAttribute("submissionstatus");
     }
+    get header() {
+        return this.getAttribute("header");
+    }
     static template = prepareTemplate(`<template>
     <form autocomplete="off">
       <slot></slot>
@@ -54,7 +57,18 @@ export class FormElement extends HTMLElement {
         if (name) this._state[name] = value;
       });
     }
-  
+
+    _authObserver = new Observer(this, "snowflake:auth");
+
+    get authorization() {
+      console.log("Authorization for user, ", this._user);
+      return (
+        this._user?.authenticated && {
+          Authorization: `Bearer ${this._user.token}`
+        }
+      );
+    }
+
     connectedCallback() {
     }
 
@@ -70,9 +84,7 @@ function onSubmit(form) {
     }
         return fetch(form.path, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: JSON.parse(form.header),
         body: JSON.stringify(form._state),
     })
     .then((res) => {
