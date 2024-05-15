@@ -2,7 +2,7 @@ import { prepareTemplate } from "./template.js";
 import { Observer } from "@calpoly/mustang";
 export class DropdownElement extends HTMLElement {
   static template = prepareTemplate(`<template>
-    <a id="login" href="http://localhost:3000/profile/login.html?next=../index.html" class="nostyle">Login</a>
+    <div><a class="nostyle" id="login" href="http://localhost:3000/profile/login.html?next=../index.html" >Login</a></div>
     <div id="account" name="actuator"><a class="nostyle">Account</a></div>
     <div id="panel">
       <slot></slot>
@@ -79,6 +79,7 @@ export class DropdownElement extends HTMLElement {
     } else {
       console.log("Setting logged out");
       this.removeAttribute("logged-in");
+      if (this.hasAttribute("open")) this.removeAttribute("open");
     }
   }
   toggle() {

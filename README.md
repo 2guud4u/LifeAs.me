@@ -19,4 +19,20 @@ Lab A7. Dark Mode Switch: click on check mark
 Lab A8. Web Components: click on Accounts on top right corner to expand selection menu
 
 
-http://localhost:3000/profile/login.html?next=../index.html
+# assignment part B
+
+Lab B1. Express Server
+
+Lab B2: Setting up your database
+
+Lab B3. Consuming a REST API
+
+Lab B4. Forms and REST
+
+Lab B5. View Template with REST
+
+Lab B6. User Authentication in Express
+
+Lab B7. User Authentication in the Client
+
+Lab B8. Deploying Your App
