@@ -2,7 +2,7 @@ import { prepareTemplate } from "./template.js";
 import { Observer } from "@calpoly/mustang";
 export class DropdownElement extends HTMLElement {
   static template = prepareTemplate(`<template>
-    <div><a class="nostyle" id="login" href="http://localhost:3000/profile/login.html?next=../index.html" >Login</a></div>
+    <div><a class="nostyle" id="login" href="./profile/login.html?next=../index.html" >Login</a></div>
     <div id="account" name="actuator"><a class="nostyle">Account</a></div>
     <div id="panel">
       <slot></slot>

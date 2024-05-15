@@ -25,14 +25,14 @@ Lab B1. Express Server
 
 Lab B2: Setting up your database
 
-Lab B3. Consuming a REST API
+Lab B3. Consuming a REST API - shown by displaying data from the database
 
-Lab B4. Forms and REST
+Lab B4. Forms and REST - sign in form
 
-Lab B5. View Template with REST
+Lab B5. View Template with REST - sign in form
 
-Lab B6. User Authentication in Express
+Lab B6. User Authentication in Express - sign in form
 
-Lab B7. User Authentication in the Client
+Lab B7. User Authentication in the Client - sign in form
 
-Lab B8. Deploying Your App
+Lab B8. Deploying Your App - on 
