@@ -35,4 +35,6 @@ Lab B6. User Authentication in Express - sign in form
 
 Lab B7. User Authentication in the Client - sign in form
 
-Lab B8. Deploying Your App - on 
+Lab B8. Deploying Your App - on https://jjiang23.unbundled.dev/index.html
+
+login with username: k and password: k
