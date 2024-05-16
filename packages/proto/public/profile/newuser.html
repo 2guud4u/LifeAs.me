@@ -21,14 +21,14 @@
       
         define({ "mu-auth": Auth.Provider });
       </script>
-      <script type="module" src="../components/login-form.js"></script>
+      <script type="module" src="../components/register-form.js"></script>
     </head>
     <body >
 
     
         <header>
             <h1 class="title"><a href="/index.html" class="nostyle">Life As ...</a></h1>
-            
+           
 
             <label style="grid-column:2 ;text-align: center;"
                 onchange="relayEvent(
@@ -43,9 +43,9 @@
        
         </header>
         <mu-auth>
-            <h2>User Login</h2>
+            <h2>User Register</h2>
             <main class="card">
-              <login-form>
+              <register-form>
                 <label>
                   <span>Username:</span>
                   <input name="username" autocomplete="off" />
@@ -54,11 +54,11 @@
                   <span>Password:</span>
                   <input type="password" name="password" />
                 </label>
-              </login-form>
+              </register-form>
             </main>
             <p>
               Or did you want to
-              <a href="./newuser.html">Sign up as a new user</a>
+              <a href="./login.html?next=../index.html">Login user</a>
               ?
             </p>
           </mu-auth>
