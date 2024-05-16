@@ -22,10 +22,12 @@ if (!username || !password) {
 } else {
     credentials
     .create(username, password)
+    
     .then((creds) => generateAccessToken(creds.username))
     .then((token) => {
         res.status(201).send({ token: token });
-    });
+    })
+    .catch((error) => res.status(409).send(error));
 }
 });
 

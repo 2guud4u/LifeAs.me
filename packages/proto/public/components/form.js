@@ -87,6 +87,9 @@ function onSubmit(form) {
         headers: JSON.parse(form.header),
         body: JSON.stringify(form._state),
     })
+    .catch((err) => {
+        form.setAttribute("submissionstatus", "Failure: " + err);
+    })
     .then((res) => {
       
         if (res.ok) {
