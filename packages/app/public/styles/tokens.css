@@ -1,0 +1,33 @@
+:root {
+    --size-type-body: 1rem;
+    --size-type-mlarge: 1.25rem;
+    --size-type-large: 1.5rem;
+    --size-type-xlarge: 2rem;
+    --size-type-xxlarge: 2.5rem;
+    /* CSS HEX */
+    --tickle-me-pink: #f08caeff;
+    --feldgrau: #3a4f41ff;
+    --chamoisee: #a77e58ff;
+    --color--background-body: #dffdffff;
+    --electric-blue: #90f3ffff;
+    /* CSS HEX */
+    --color-banner: #809bceff;
+    --powder-blue: #95b8d1ff;
+    --color-background-card: #b8e0d2ff;
+    --honeydew: #d6eadfff;
+    --fairy-tale: #eac4d5ff;
+    --color-text: #000000;
+    --color-text-section-title: #000000;
+    --color-background-section-title: #d6eadfff;
+}
+
+body.dark-mode{
+    --color-banner: #0d1117;
+    --color-background-body: #1f2121ff;
+    --color-background-card: #1e1e1eff;
+    --color-text: #c9d1d9;
+    --color-text-section-title: #c9d1d9;
+    --color-background-section-title: rgb(0, 0, 0);
+
+}
+
