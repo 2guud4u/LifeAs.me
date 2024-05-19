@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "exports": {
+    "./models": {
+      "import": "./src/models/index.ts"
+    }
+  },
   "scripts": {
     "dev": "cross-env STATIC=../proto/public npx nodemon",
     "build": "npx etsc",
