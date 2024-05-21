@@ -8,23 +8,87 @@ export default function update(
   apply: Update.ApplyMap<Model>,
   user: Auth.User
 ) {
+  console.log('update for', message[0])
   switch (message[0]) {
-    case "routine/save":
-      saveRoutine(message[1], user).then((profile) =>
-        apply((model) => ({ ...model, profile }))
+    
+    case "routine/select":
+      selectRoutine(message[1], user).then((routine) =>
+        apply((model) => ({ ...model, routine }))
       );
       break;
-    // put the rest of your cases here
+    
+    case "routine/create":
+      createRoutine(message[1], user).then((routine) =>
+        apply((model) => ({ ...model, routine }))
+      );
+      break;
+
+    case "routine/getall":
+      getAllRoutines(message[1], user).then((routines) =>
+        apply((model) => ({ ...model, routines }))
+      );
+      break;
     default:
       const unhandled: never = message[0];
       throw new Error(`Unhandled Auth message "${unhandled}"`);
   }
 }
 
-async function saveRoutine(
-  msg: { userid: string; routine: Routine },
-    user: Auth.User
+function getAllRoutines(
+  msg: {},
+  user: Auth.User
 ) {
-    return {} as Model;
-  // make your API call here
+  console.log('getRoutine')
+  return fetch(`/api/routines`, {
+    headers: Auth.headers(user)
+  })
+    .then((response: Response) => {
+      if (response.status === 200) return response.json();
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) return json as Routine[];
+      return undefined;
+    });
+}
+function selectRoutine(
+  msg: { routineid: string },
+  user: Auth.User
+) {
+  return fetch(`/api/routines/${msg.routineid}`, {
+    headers: Auth.headers(user)
+  })
+    .then((response: Response) => {
+      if (response.status === 200) return response.json();
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) return json as Routine;
+      return undefined;
+    });
+}
+
+function createRoutine(
+  msg: {
+    userid: string;
+    routine: Routine;
+  },
+  user: Auth.User
+) {
+  return fetch(`/api/profiles/${msg.userid}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...Auth.headers(user)
+    },
+    body: JSON.stringify(msg.routine)
+  })
+    .then((response: Response) => {
+      if (response.status === 200) return response.json();
+      return undefined;
+    })
+    .then((json: unknown) => {
+      if (json) return json as Routine;
+      return undefined;
+    });
 }

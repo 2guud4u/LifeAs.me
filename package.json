@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run start:app",
+    "start:api": "npm start -w server",
+    "start:app": "npm run -w server start:app",
+    "start:proto": "npm run -w server start:proto"
   },
   "repository": {
     "type": "git",

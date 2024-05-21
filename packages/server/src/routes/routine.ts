@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import routines from "../services/routine-svc";
 import { Routine } from "../models/routine";
+import {authenticateUser} from "./auth";
 const router = express.Router();
 
 router.get("/:routineId", (req: Request, res: Response) => {
@@ -12,7 +13,7 @@ router.get("/:routineId", (req: Request, res: Response) => {
     .catch((err) => res.status(404).end());
 });
 
-router.post("/", (req: Request, res: Response) => {
+router.post("/", authenticateUser,(req: Request, res: Response) => {
   const newRoutine = req.body;
   console.log('got a post')
   routines
@@ -21,7 +22,7 @@ router.post("/", (req: Request, res: Response) => {
     .catch((err) => res.status(500).send(err));
 });
 
-router.put("/:routineId", (req: Request, res: Response) => {
+router.put("/:routineId", authenticateUser, (req: Request, res: Response) => {
   const { routineId } = req.params;
   const updatedRoutine = req.body;
 

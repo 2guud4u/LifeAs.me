@@ -23,6 +23,22 @@ export class RoutineViewElement extends View<Model, Msg> {
       <!-- your template/render code here -->
     `;
   }
-
+  attributeChangedCallback(
+    name: string,
+    oldValue: string,
+    newValue: string
+  ) {
+    if (
+      name === "tour-id" &&
+      oldValue !== newValue &&
+      newValue
+    ) {
+      this.dispatchMessage([
+        "routine/select",
+        { routineid: newValue }
+      ]);
+    }
+    super.attributeChangedCallback(name, oldValue, newValue);
+  }
   // etc
 }

@@ -1,101 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tilt+Neon&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
 
-      <script type="module">
-        import { define, Auth, Events} from "@calpoly/mustang";
-        import { HeaderElement } from "/src/components/header";
-        define({ 
+    <script type="module">
+        import {
+            define,
+            Auth,
+            Events
+        } from "@calpoly/mustang";
+        import {
+            HeaderElement
+        } from "/src/components/header";
+        define({
             "mu-auth": Auth.Provider,
             "lifeas-header": HeaderElement,
 
         });
         window.relayEvent = Events.relay;
-      </script>
-    <script type="module" src="/index.js"></script>
-    <script type="module" src="/src/main"></script>
+    </script>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./src/main"></script>
 
-    </head>
-    <title>Life As ...</title>
-    <body >
+</head>
+<title>Life As ...</title>
+
+<body>
     <mu-auth provides="snowflake:auth" redirect="./index.html">
-        <lifeas-header></lifeas-header>
-        
-         <article>
+        <mu-store provides="snowflake:model">
+            <lifeas-header></lifeas-header>
 
-        
-            <section class="widgets">
-                <widget_body>
+            <article>
+                <section class="widgets">
+                    <widget_body>
+
+                        <card class="widget">
+                            <heading>Up Next</heading>
+
+                            <body> - Cardio</body>
+                        </card>
+                        <card class="widget">
+                            <heading>Progress</heading>
+
+                            <body>Graph of progress or some other stats</body>
+                        </card>
+
+                    </widget_body>
+
+                </section>
+                <section>
+                    <heading>
+                        Your Friend's Globes
+                    </heading>
+                    <section_body>
+                        <card>
+                            <heading>Friend name
+                                <div>(icon)</div>
+                            </heading>
+                            <card_body> (image place)/what action item they are on</card_body>
+                        </card>
+                        <card>
+                            <heading>Friend name
+                                <div>(icon)</div>
+                            </heading>
+                            <card_body> (image place)/what action item they are on</card_body>
+                        </card>
+                        <card>
+                            <heading>Friend name
+                                <div>(icon)</div>
+                            </heading>
+                            <card_body> (image place)/what action item they are on</card_body>
+                        </card>
+
+                    </section_body>
+
+                </section>
+                <section>
                     
-                    <card class="widget">
-                        <heading>Up Next</heading>
-                        <body> - Cardio</body>
-                    </card>
-                    <card class="widget">
-                        <heading>Progress</heading>
-                        <body>Graph of progress or some other stats</body>
-                    </card>
-                
-                </widget_body>
-                
-            </section>
-            <section>
-                <heading>
-                Your Friend's Globes 
-                </heading>
-                <section_body>
-                    <card>
-                        <heading>Friend name
-                            <div>(icon)</div>
-                        </heading>
-                        <card_body> (image place)/what action item they are on</card_body>
-                    </card>
-                    <card>
-                        <heading>Friend name
-                            <div>(icon)</div>
-                        </heading>
-                        <card_body> (image place)/what action item they are on</card_body>
-                    </card>
-                    <card>
-                        <heading>Friend name
-                            <div>(icon)</div>
-                        </heading>
-                        <card_body> (image place)/what action item they are on</card_body>
-                    </card>
+                        <routines-view></routines-view>
+                        
+
+
+
+
+
                     
-                </section_body>
-                
-            </section>
-            <section>
-                <heading>
-                    Discover 
-                </heading>
-                filter by:
-                <section_body>
-                    <globe-card open="open" src="api/routines/dog">
-                        <span slot="heading">Blaze Pasquale</span>
-                        <span slot="body">The body</span>
-                        <span slot="info">Footer info</span>
-                    </globe-card>
-                    <globe-card src="api/routines/1"></globe-card>
-                    <globe-card src="api/routines/2"></globe-card>
-                    
-                    
-                    
-                    
-                    
-                </section_body>
-            </section>
-        
-    </article>
+                </section>
+
+            </article>
+        </mu-store>
     </mu-auth>
-    </body>
+</body>
+
 </html>

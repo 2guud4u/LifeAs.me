@@ -12,7 +12,9 @@ const staticDir = process.env.STATIC || "public";
 connect("csc437");
 app.use(express.static(staticDir));
 app.use(express.json());
+app.use("/api/routines/", routine);
 app.use("/auth", auth);
+
 
 const nodeModules = path.resolve(
   __dirname,
@@ -21,12 +23,13 @@ const nodeModules = path.resolve(
 console.log("Serving NPM packages from", nodeModules);
 app.use("/node_modules", express.static(nodeModules));
 
-app.use("/api/routines/", authenticateUser, routine);
+
+
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");
     }
 );
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`haha Server running at http://localhost:${port} haha`);
 });
