@@ -43,18 +43,14 @@ export class HeaderElement extends View<Model, Msg> {
         <header>
             <h1 class="title">Life As ...</h1>
             ${this.username == "anonymous" ? html`<a href="./login.html
-            ">Login</a>` : html`<p>Welcome, anonymous</p>
+            ">Login</a>` : html`<p>Welcome, ${this.username}</p>
+
             <drop-down class="menu">
                 <dropdown-container>
                 <Dropdown-Item><a class="nostyle" href="/profile.html">Profile</a></Dropdown-Item>
                 <Dropdown-Item>Settings</Dropdown-Item>
                 <a href="./globecrafting.html" class="nostyle">Create Routine</a>
-                <Dropdown-Item><a
-                    class="nostyle"
-                    href="#"
-                    onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
-                    Sign out
-                  </a></Dropdown-Item>
+                <a href="#" @click=${signOutUser}> Sign out </a>
                   <dropdown-container>
                 </drop-down>
                 `}
@@ -106,4 +102,8 @@ function toggleDarkMode(ev: InputEvent) {
   const checked = target.checked;
 
   Events.relay(ev, "dark-mode", { checked });
+}
+
+function signOutUser(ev: Event) {
+  Events.relay(ev, "auth:message", ["auth/signout"]);
 }
