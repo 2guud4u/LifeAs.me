@@ -1,6 +1,8 @@
-import { prepareTemplate } from "./template.js";
+
 import { Observer } from "@calpoly/mustang";
-export class DropdownElement extends HTMLElement {
+import { css, html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
+export class DropdownElement extends LitElement {
   static template = prepareTemplate(`<template>
     <div><a class="nostyle" id="login" href="./profile/login.html?next=../index.html" >Login</a></div>
     <div id="account" name="actuator"><a class="nostyle">Account</a></div>
