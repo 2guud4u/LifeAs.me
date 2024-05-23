@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/2guud4u/LifeAs.me#readme",
   "workspaces": [
-      "packages/*"
-  ]
+    "packages/*"
+  ],
+  "dependencies": {
+    "@calpoly/mustang": "^0.1.7"
+  }
 }

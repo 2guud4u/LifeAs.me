@@ -20,7 +20,7 @@
 
         define({
             "mu-auth": Auth.Provider,
-           
+
 
         });
         window.relayEvent = Events.relay;
@@ -32,70 +32,72 @@
 <title>Life As ...</title>
 
 <body>
-    <mu-auth provides="snowflake:auth" redirect="./index.html">
-        <mu-store provides="snowflake:model">
-            <lifeas-header></lifeas-header>
+    <mu-history provides="snowflake:history">
+        <mu-auth provides="snowflake:auth" redirect="./index.html">
+            <mu-store provides="snowflake:model">
+                <lifeas-header></lifeas-header>
+                <mu-switch></mu-switch>
+                <!-- <article>
+                    <section class="widgets">
+                        <widget_body>
 
-            <article>
-                <section class="widgets">
-                    <widget_body>
+                            <card class="widget">
+                                <heading>Up Next</heading>
 
-                        <card class="widget">
-                            <heading>Up Next</heading>
+                                <body> - Cardio</body>
+                            </card>
+                            <card class="widget">
+                                <heading>Progress</heading>
 
-                            <body> - Cardio</body>
-                        </card>
-                        <card class="widget">
-                            <heading>Progress</heading>
+                                <body>Graph of progress or some other stats</body>
+                            </card>
 
-                            <body>Graph of progress or some other stats</body>
-                        </card>
+                        </widget_body>
 
-                    </widget_body>
+                    </section>
+                    <section>
+                        <heading>
+                            Your Friend's Globes
+                        </heading>
+                        <section_body>
+                            <card>
+                                <heading>Friend name
+                                    <div>(icon)</div>
+                                </heading>
+                                <card_body> (image place)/what action item they are on</card_body>
+                            </card>
+                            <card>
+                                <heading>Friend name
+                                    <div>(icon)</div>
+                                </heading>
+                                <card_body> (image place)/what action item they are on</card_body>
+                            </card>
+                            <card>
+                                <heading>Friend name
+                                    <div>(icon)</div>
+                                </heading>
+                                <card_body> (image place)/what action item they are on</card_body>
+                            </card>
 
-                </section>
-                <section>
-                    <heading>
-                        Your Friend's Globes
-                    </heading>
-                    <section_body>
-                        <card>
-                            <heading>Friend name
-                                <div>(icon)</div>
-                            </heading>
-                            <card_body> (image place)/what action item they are on</card_body>
-                        </card>
-                        <card>
-                            <heading>Friend name
-                                <div>(icon)</div>
-                            </heading>
-                            <card_body> (image place)/what action item they are on</card_body>
-                        </card>
-                        <card>
-                            <heading>Friend name
-                                <div>(icon)</div>
-                            </heading>
-                            <card_body> (image place)/what action item they are on</card_body>
-                        </card>
+                        </section_body>
 
-                    </section_body>
+                    </section>
+                    <section>
 
-                </section>
-                <section>
-                    
                         <routines-view></routines-view>
-                        
 
 
 
 
 
-                    
-                </section>
 
-            </article>
-        </mu-store>
-    </mu-auth>
+
+                    </section>
+
+                </article> -->
+            </mu-store>
+        </mu-auth>
+    </mu-history>
 </body>
 
 </html>

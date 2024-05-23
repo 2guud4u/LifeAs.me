@@ -42,14 +42,14 @@ export class HeaderElement extends View<Model, Msg> {
       
         <header>
             <h1 class="title">Life As ...</h1>
-            ${this.username == "anonymous" ? html`<a href="./login.html
+            ${this.username == "anonymous" ? html`<a href="/app/login
             ">Login</a>` : html`<p>Welcome, ${this.username}</p>
 
             <drop-down class="menu">
                 <dropdown-container>
                 <Dropdown-Item><a class="nostyle" href="/profile.html">Profile</a></Dropdown-Item>
                 <Dropdown-Item>Settings</Dropdown-Item>
-                <a href="./globecrafting.html" class="nostyle">Create Routine</a>
+                <a href="/app/create" class="nostyle">Create Routine</a>
                 <a href="#" @click=${signOutUser}> Sign out </a>
                   <dropdown-container>
                 </drop-down>
