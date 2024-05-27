@@ -13,11 +13,11 @@ router.get("/:routineId", (req: Request, res: Response) => {
     .catch((err) => res.status(404).end());
 });
 
-router.post("/",(req: Request, res: Response) => {
+router.post("/", authenticateUser,(req: Request, res: Response) => {
   try{
     const newRoutine = req.body;
     newRoutine.id = newRoutine.name + newRoutine.createdBy;
-    
+
   routines
     .create(newRoutine)
     .then((routine: Routine) => res.status(201).send(routine))
