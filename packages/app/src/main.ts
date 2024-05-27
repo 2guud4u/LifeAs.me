@@ -16,7 +16,14 @@ import { HeaderElement } from "./views/header-view";
 import { RoutinesViewElement } from "./views/routines-view";
 import { LoginViewElement } from "./views/login-view";
 import { RoutineCreationViewElement } from "./views/routine-creation-view";
+import { RoutinePageViewElement } from "./views/routine-page-view";
 const routes = [
+  {
+    path: "/app/view/:id",
+    view: (params: Switch.Params) => html`
+      <routine-page-view routine-id=${params.id}></routine-page-view>
+    `
+  },
   {
     path: "/app/create",
     view: () => html`
@@ -61,4 +68,5 @@ define({
   "routines-view": RoutinesViewElement,
   "login-view": LoginViewElement,
   "routine-creation-view": RoutineCreationViewElement,
+  "routine-page-view": RoutinePageViewElement
 });

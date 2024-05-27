@@ -16,7 +16,7 @@ router.get("/:routineId", (req: Request, res: Response) => {
 router.post("/", authenticateUser,(req: Request, res: Response) => {
   try{
     const newRoutine = req.body;
-    newRoutine.id = newRoutine.name + newRoutine.createdBy;
+    newRoutine.id = (newRoutine.name).replace(/\s+/g, '-') + "-" + newRoutine.createdBy;
 
   routines
     .create(newRoutine)

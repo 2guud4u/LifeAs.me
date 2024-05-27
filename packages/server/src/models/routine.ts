@@ -3,4 +3,5 @@ export interface Routine {
     name: string;
     summary: string;
     createdBy: string;
+    steps: string;
   }

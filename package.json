@@ -9,7 +9,7 @@
     "start:api": "npm start -w server",
     "start:app": "npm run -w server start:app",
     "start:proto": "npm run -w server start:proto",
-    "start:dev": "npm run -w server -w app dev"
+    "start:dev": "concurrently \"npm run -w server dev\" \"npm run -w app dev\""
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@calpoly/mustang": "^0.1.7"
+    "@calpoly/mustang": "^0.1.7",
+    "concurrently": "^8.2.2"
   }
 }

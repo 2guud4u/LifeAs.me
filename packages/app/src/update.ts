@@ -55,6 +55,7 @@ function selectRoutine(
   msg: { routineid: string },
   user: Auth.User
 ) {
+  console.log('selectRoutine')
   return fetch(`/api/routines/${msg.routineid}`, {
     headers: Auth.headers(user)
   })

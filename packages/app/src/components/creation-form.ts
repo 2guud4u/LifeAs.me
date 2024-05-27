@@ -38,6 +38,17 @@ export class FormCreator extends LitElement {
           <span>Routine Description</span>
           <input name="summary" />
         </label>
+        <label>
+        <span>Routine steps</span>
+        <input name="steps" />
+      </label>
+
+        <label>
+        <span>Airports</span>
+        <input-array name="airports">
+          <span slot="label-add">Add an airport</span>
+        </input-array>
+      </label>
           </mu-form>
         </section>
       `;

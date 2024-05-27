@@ -14,7 +14,7 @@ export class RoutineCardElement extends LitElement {
 
     render() {
       return html`
-      
+      <a href="/app/view/${(this.name).replace(/\s+/g, '-') + "-" + this.createdBy}">
       <card>
       <heading><slot name="name">${this.name}</slot> <icon>(icon)</icon> </heading>
       <card_body>
@@ -27,6 +27,7 @@ export class RoutineCardElement extends LitElement {
           By: <slot name="createdBy">${this.createdBy}</slot>
         <card_footer>
     </card>
+    </a>
       `;
     }
   
