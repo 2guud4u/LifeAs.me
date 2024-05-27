@@ -70,13 +70,13 @@ function selectRoutine(
 
 function createRoutine(
   msg: {
-    userid: string;
     routine: Routine;
   },
   user: Auth.User
 ) {
-  return fetch(`/api/profiles/${msg.userid}`, {
-    method: "PUT",
+  console.log('I AM SUBMITTING A NEW ROUTINE')
+  return fetch(`/api/routines/`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       ...Auth.headers(user)

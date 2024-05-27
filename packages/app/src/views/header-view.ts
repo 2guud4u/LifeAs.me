@@ -1,7 +1,7 @@
 // src/components/blazing-header.ts
 import {
   //Auth,
-  DropdownElement,
+  Dropdown,
   Events,
   Observer,
   define,
@@ -16,7 +16,7 @@ import { Model } from "../model";
 
 export class HeaderElement extends View<Model, Msg> {
   static uses = define({
-    "drop-down": DropdownElement
+    "drop-down": Dropdown.Element,
   });
   @property()
   get user(): User | undefined {

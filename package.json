@@ -8,7 +8,8 @@
     "start": "npm run start:app",
     "start:api": "npm start -w server",
     "start:app": "npm run -w server start:app",
-    "start:proto": "npm run -w server start:proto"
+    "start:proto": "npm run -w server start:proto",
+    "start:dev": "npm run -w server -w app dev"
   },
   "repository": {
     "type": "git",

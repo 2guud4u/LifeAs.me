@@ -13,13 +13,20 @@ router.get("/:routineId", (req: Request, res: Response) => {
     .catch((err) => res.status(404).end());
 });
 
-router.post("/", authenticateUser,(req: Request, res: Response) => {
-  const newRoutine = req.body;
-  console.log('got a post')
+router.post("/",(req: Request, res: Response) => {
+  try{
+    const newRoutine = req.body;
+    newRoutine.id = newRoutine.name + newRoutine.createdBy;
+    
   routines
     .create(newRoutine)
     .then((routine: Routine) => res.status(201).send(routine))
     .catch((err) => res.status(500).send(err));
+  }
+  catch(err){
+    res.status(500).send
+  }
+  
 });
 
 router.put("/:routineId", authenticateUser, (req: Request, res: Response) => {

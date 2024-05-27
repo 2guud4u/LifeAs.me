@@ -3,6 +3,8 @@ import {
     View,
     Rest,
     Events,
+    InputArray,
+    Form
 } from "@calpoly/mustang";
 import {
     css,
@@ -20,12 +22,16 @@ import {
 import {
     Model
 } from "../model";
-
+import {
+    FormCreator
+} from "../components/creation-form";
 
 export class RoutineCreationViewElement extends View < Model, Msg > {
 
     static uses = define({
-        "restful-form": Rest.FormElement
+        "input-array": InputArray.Element,
+        "mu-form": Form.Element,
+        "creation-form": FormCreator
     })
     @property()
     get routines(): Routine[] | undefined {
@@ -35,17 +41,8 @@ export class RoutineCreationViewElement extends View < Model, Msg > {
     render() {
 
         return html`
-      <restful-form new src="/api/routines/">
-      <label>
-      <span>Routine Name</span>
-      <input name="name" autocomplete="off" />
-    </label>
-    <label>
-      <span>Routine Description</span>
-      <input name="summary" />
-    </label>
-    <input type="hidden" name="id" value="doggy"/>
-    </restful-form>
+      <creation-form @mu-form:submit=${event => {this._handleSubmit(event)} }>
+    </creation-form>
     
     `;
     }
@@ -56,26 +53,9 @@ export class RoutineCreationViewElement extends View < Model, Msg > {
 
     constructor() {
         super("snowflake:model");
-
-        this.addEventListener(
-            "mu-rest-form:created",
-            (event: Event) => {
-                const detail = (event as CustomEvent).detail;
-                const {
-                    token
-                } = detail.created;
-                const redirect = this.next || "/";
-                console.log("Login successful", detail, redirect);
-
-                Events.relay(event, "auth:message", [
-                    "auth/signin",
-                    {
-                        token,
-                        redirect
-                    }
-                ]);
-            }
-        );
+      
+    
+        
     }
     connectedCallback() {
         super.connectedCallback(); // Call the parent class connectedCallback if necessary
@@ -90,6 +70,18 @@ export class RoutineCreationViewElement extends View < Model, Msg > {
     static styles = css`
   
   `;
+
+  _handleSubmit(event: Form.SubmitEvent<any>) {
+    console.log("TRYING TO DO THE STUFF");
+    this.dispatchMessage([
+      "routine/create",
+      {
+        
+        routine: event.detail,
+
+      }
+    ]);
+  }
 }
 // <comp .fun ${this.fun} .bar=${this.bar}></comp>
 // @property()
