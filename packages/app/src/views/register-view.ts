@@ -1,22 +1,22 @@
 import { define, View, Rest, Events, } from "@calpoly/mustang";
 import { css, html } from "lit";
-
+import { property } from "lit/decorators.js";
+import { Routine } from "server/models";
 import { Msg } from "../messages";
 import { Model } from "../model";
-//import { RoutineCardElement } from "../components/routine-card";
 
-export class LoginViewElement extends View<Model, Msg> {
+
+export class RegisterViewElement extends View<Model, Msg> {
 
   static uses = define({
     "restful-form": Rest.FormElement
   })
 
-
   render() {
     
     return html`
-    <h1>Login</h1>
-    <restful-form new src="/auth/login">
+    <h1>Register</h1>
+    <restful-form new src="/auth/register">
     <label>
     <span>Username:</span>
     <input name="username" autocomplete="off" />
@@ -26,7 +26,7 @@ export class LoginViewElement extends View<Model, Msg> {
     <input type="password" name="password" />
   </label>
   </restful-form>
-    <a href="/app/register">CLick here to register!</a>
+  <a href="/app/login">CLick here to login!</a>
     `;
   }
   get next() {

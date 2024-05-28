@@ -17,6 +17,7 @@ import { RoutinesViewElement } from "./views/routines-view";
 import { LoginViewElement } from "./views/login-view";
 import { RoutineCreationViewElement } from "./views/routine-creation-view";
 import { RoutinePageViewElement } from "./views/routine-page-view";
+import { RegisterViewElement } from "./views/register-view";
 const routes = [
   {
     path: "/app/view/:id",
@@ -34,6 +35,12 @@ const routes = [
     path: "/app/login",
     view: () => html`
     <login-view></login-view>
+    `
+  },
+  {
+    path: "/app/register",
+    view: () => html`
+    <register-view></register-view>
     `
   },
   {
@@ -68,5 +75,6 @@ define({
   "routines-view": RoutinesViewElement,
   "login-view": LoginViewElement,
   "routine-creation-view": RoutineCreationViewElement,
-  "routine-page-view": RoutinePageViewElement
+  "routine-page-view": RoutinePageViewElement,
+  "register-view": RegisterViewElement
 });

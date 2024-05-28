@@ -92,6 +92,17 @@ export class HeaderElement extends View<Model, Msg> {
     flex-direction: column;
       
   }
+  a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
   `;
 }
 
