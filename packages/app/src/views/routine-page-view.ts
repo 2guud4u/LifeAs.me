@@ -36,18 +36,12 @@ export class RoutinePageViewElement extends View<Model, Msg> {
       return html`<div>loading...</div>`;
     }
     return html`
-    
-    <heading>
-        Discover
-    </heading>
-    filter by:
-    <routine_body>
-    
-      <routine-card name="${routine.name}"
-        summary="${routine.summary}"
-        createdBy="${routine.createdBy}"
-      ></routine-card>
-    </routine_body>
+    <h1>Routine: ${routine.name}</h1>
+    <p>Created By: ${routine.createdBy}</p>
+    <p>${routine.summary}</p>
+    <h2>Exercises</h2>
+    <p>${routine.steps}</p>
+
     `;
   }
   connectedCallback() {
@@ -64,8 +58,9 @@ export class RoutinePageViewElement extends View<Model, Msg> {
     newValue: string
   ) {
     super.attributeChangedCallback(name, oldValue, newValue);
+    console.log("Routine Page Attribute Changed", name, oldValue, newValue);
     if (
-      name === "tour-id" &&
+      name === "routine-id" &&
       oldValue !== newValue &&
       newValue
     ) {
@@ -77,21 +72,6 @@ export class RoutinePageViewElement extends View<Model, Msg> {
     }
   }
   static styles = css`
-  routine_body {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  heading {
-    font-family: "Tilt Neon", sans-serif;
-    font-size: var(--size-type-large);
-    color: var(--color-text-section-title);
-    background-color: var(--color-background-section-title);
-    text-decoration: underline;
-  }
-  :host {
-    overflow: hidden; /* or scroll, auto, etc. */
-}
+
   `;
 }

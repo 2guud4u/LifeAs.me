@@ -41,7 +41,7 @@ export class HeaderElement extends View<Model, Msg> {
     return html`
       
         <header>
-            <h1 class="title">Life As ...</h1>
+            <h1 class="title"><a href="/app" class="nostyle">Life As ...</a></h1>
             ${this.username == "anonymous" ? html`<a href="/app/login
             ">Login</a>` : html`<p>Welcome, ${this.username}</p>
 

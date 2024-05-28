@@ -7,6 +7,7 @@ const RoutineSchema = new Schema<Routine>(
     name: { type: String, required: true },
     summary: { type: String, required: true },
     createdBy: { type: String, required: true },
+    steps: { type: String, required: true },
   },
   { collection: "routines" }
 );
