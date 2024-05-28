@@ -24,6 +24,8 @@ export class RoutinePageViewElement extends View<Model, Msg> {
     return this.model.routine;
   }
 
+  
+
   constructor() {
     super("snowflake:model");
     
@@ -39,7 +41,7 @@ export class RoutinePageViewElement extends View<Model, Msg> {
     <h1>Routine: ${routine.name}</h1>
     <p>Created By: ${routine.createdBy}</p>
     <p>${routine.summary}</p>
-    <h2>Exercises</h2>
+    <h2>Details</h2>
     <p>${routine.steps}</p>
 
     `;
@@ -47,7 +49,7 @@ export class RoutinePageViewElement extends View<Model, Msg> {
   connectedCallback() {
     super.connectedCallback(); // Call the parent class connectedCallback if necessary
     // Check if routines are not already loaded
-    
+
       // Dispatch routine/getall message
     
     

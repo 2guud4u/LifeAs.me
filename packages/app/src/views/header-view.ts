@@ -42,7 +42,7 @@ export class HeaderElement extends View<Model, Msg> {
       
         <header>
             <h1 class="title"><a href="/app" class="nostyle">Life As ...</a></h1>
-            ${this.username == "anonymous" ? html`<a href="/app/login
+            ${this.username == "anonymous" ? html`<a id="Login" class="nostyle" href="/app/login
             ">Login</a>` : html`<p>Welcome, ${this.username}</p>
 
             <drop-down class="menu">
@@ -50,7 +50,7 @@ export class HeaderElement extends View<Model, Msg> {
                 <Dropdown-Item><a class="nostyle" href="/profile.html">Profile</a></Dropdown-Item>
                 <Dropdown-Item>Settings</Dropdown-Item>
                 <a href="/app/create" class="nostyle">Create Routine</a>
-                <a href="#" @click=${signOutUser}> Sign out </a>
+                <a href="/app" class="nostyle" @click=${signOutUser}> Sign out </a>
                   <dropdown-container>
                 </drop-down>
                 `}
@@ -91,6 +91,14 @@ export class HeaderElement extends View<Model, Msg> {
     align-items: center;
     flex-direction: column;
       
+  }
+  #login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    grid-column: 5;
+    
   }
   a.nostyle:link {
     text-decoration: inherit;

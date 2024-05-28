@@ -8,6 +8,7 @@ import { RoutineCardElement } from "../components/routine-card";
 
 export class RoutinesViewElement extends View<Model, Msg> {
 
+  static sortOptions = ["A-Z", "Z-A"];
   static uses = define({
     "routine-card": RoutineCardElement
   })
@@ -16,6 +17,13 @@ export class RoutinesViewElement extends View<Model, Msg> {
     return this.model.routines;
   }
 
+  @property()
+  sortIndex = 0;
+
+  @property()
+  get sortedRoutines(): Routine[] | undefined {
+    return SortRoutines(this.routines || [], RoutinesViewElement.sortOptions[this.sortIndex]);
+  }
 
   constructor() {
     super("snowflake:model");
@@ -30,9 +38,11 @@ export class RoutinesViewElement extends View<Model, Msg> {
     <heading>
         Discover
     </heading>
-    filter by:
+    <p>filter by:</p>
+    
+    <button type="button" @click=${this.handleButtonClick}>${RoutinesViewElement.sortOptions[this.sortIndex]}</button>
     <routine_body>
-    ${this.routines?.map((routine) => 
+    ${this.sortedRoutines?.map((routine) => 
       html`
       <routine-card name="${routine.name}"
         summary="${routine.summary}"
@@ -50,7 +60,9 @@ export class RoutinesViewElement extends View<Model, Msg> {
     this.dispatchMessage(["routine/getall", {}]);
     
   }
-
+  handleButtonClick() {
+    this.sortIndex = (this.sortIndex + 1) % RoutinesViewElement.sortOptions.length;
+  }
   static styles = css`
   routine_body {
     display: flex;
@@ -68,8 +80,20 @@ export class RoutinesViewElement extends View<Model, Msg> {
   :host {
     overflow: hidden; /* or scroll, auto, etc. */
 }
+p {
+  color: var(--color-text-section-title);
+}
   `;
 }
-// <comp .fun ${this.fun} .bar=${this.bar}></comp>
-// @property()
-// fn: () =>
+
+function SortRoutines(routines: Routine[], sortOption: string) {
+  switch (sortOption) {
+    case "A-Z":
+      return routines.sort((a, b) => a.name.localeCompare(b.name));
+    case "Z-A":
+      return routines.sort((a, b) => b.name.localeCompare(a.name));
+    default:
+      return routines;
+  }
+}
+
