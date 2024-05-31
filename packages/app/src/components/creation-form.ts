@@ -6,7 +6,8 @@ import {
     Rest,
     Events,
     InputArray,
-    Form
+    Form,
+    Observer
 } from "@calpoly/mustang";
 import {
     Model
@@ -14,14 +15,30 @@ import {
 import {
     Routine
 } from "server/models";
-export class FormCreator extends LitElement {
+import { User } from "server/models";
+import { Msg } from "../messages";
+export class FormCreator extends View<Model, Msg> {
     static uses = define({
       "mu-form": Form.Element,
       "input-array": InputArray.Element
     });
-    @property()
-    username?: string;
+    get user(): User | undefined {
+      return this.model.user;
+    }
   
+    @property()
+    username = "anonymous";
+  
+    _authObserver = new Observer(this, "snowflake:auth");
+  
+    connectedCallback() {
+      super.connectedCallback();
+      this._authObserver.observe(({ user }) => {
+        if (user) {
+          this.username = user.username;
+        }
+      });
+    }
     @property({ attribute: false })
     init?: Routine;
   
@@ -29,7 +46,7 @@ export class FormCreator extends LitElement {
       return html`
         <section>
 
-          <mu-form .init=${{"createdBy": "horse"}}>
+          <mu-form .init=${{"createdBy": this.username}}>
           <label>
           <span>Routine Name</span>
           <input name="name" autocomplete="off" />
@@ -43,12 +60,7 @@ export class FormCreator extends LitElement {
         <input name="steps" />
       </label>
 
-        <label>
-        <span>Airports</span>
-        <input-array name="airports">
-          <span slot="label-add">Add an airport</span>
-        </input-array>
-      </label>
+        
           </mu-form>
         </section>
       `;
